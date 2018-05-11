@@ -1,4 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+// /* You can add global styles to this file, and also import other style files */
+@import "./app/styles/mat-theme";
+@import "./app/styles/margins";
+@import "./app/styles/paddings";
 
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
-@import "./app/styles/margins.scss";
+body
+{
+    font-family: 'Roboto', sans-serif !important;
+}
