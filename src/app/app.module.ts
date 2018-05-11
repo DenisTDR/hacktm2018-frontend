@@ -5,22 +5,28 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { 
-  MatButtonModule
+  MatButtonModule, 
+  MatToolbarModule, 
+  MatMenuModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+import { HeaderMenuComponent } from './components/header-menu/header-menu.component';
 
 const matImportedModule = [
-  MatButtonModule
+  MatButtonModule,
+  MatToolbarModule,
+  MatMenuModule
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    HeaderMenuComponent
   ],
   imports: [
     BrowserModule,
