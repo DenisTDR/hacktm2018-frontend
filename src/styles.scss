@@ -43,10 +43,14 @@
   src: url('assets/fonts/Merriweather/Merriweather-Light.otf') format("opentype");
 }
 
-body
+body,
+button,
+input
 {
     font-family: 'Lato Regular', sans-serif !important;
-    background-color: #f4f4f4 !important;
+}
+body {
+  background-color: #f4f4f4 !important;
 }
 
 .text-center
