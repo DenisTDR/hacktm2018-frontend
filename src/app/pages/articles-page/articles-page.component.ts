@@ -15,15 +15,14 @@ export class ArticlesPageComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    this.api.getArticles().subscribe(
-      ( data: any ) => {
-        this.articles = <Article[]> data.result;
-        console.log(data);
-      },
-      error => {
-        console.log(error);
-      }
-    );
-
+      this.api.getArticles().subscribe(
+        ( data: any ) => {
+          this.articles = <Article[]> data.result;
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
   }
