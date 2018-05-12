@@ -11,7 +11,8 @@ import {
   MatDialogModule,
   MatSnackBarModule,
   MatInputModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -34,7 +35,8 @@ const matImportedModule = [
   MatDialogModule,
   MatSnackBarModule,
   MatInputModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatProgressSpinnerModule
 ]
 
 @NgModule({

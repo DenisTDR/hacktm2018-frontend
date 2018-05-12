@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Article} from '../../models/article';
 import {ApiService} from '../../services/api.service';
+import { MatDialog } from '@angular/material';
+import { AddArticleComponent } from '../../components/add-article/add-article.component';
 
 @Component({
   selector: 'app-articles-page',
@@ -9,8 +11,9 @@ import {ApiService} from '../../services/api.service';
 })
 export class ArticlesPageComponent implements OnInit {
    public articles: Article[];
-
-    constructor( private api: ApiService) {
+  public loadingArticles = false;
+    constructor( private api: ApiService,
+      private addNewArticleDialog: MatDialog) {
     }
 
     ngOnInit() {
@@ -19,16 +22,20 @@ export class ArticlesPageComponent implements OnInit {
 
     getArticles()
     {
+      this.loadingArticles = true;
       this.api.getArticles().subscribe(
         ( data: any ) => {
           this.articles = <Article[]> data.result;
-          this.articles.push(data.result[0]);
-          this.articles.push(data.result[1]);
-          this.articles.push(data.result[2]);
+          this.loadingArticles = false;
         },
         error => {
+          this.loadingArticles = false;
           console.log(error);
         }
       );
+    }
+
+    public openAddArticleModal() {
+      this.addNewArticleDialog.open(AddArticleComponent, {width: '400px'});
     }
   }

@@ -1,4 +1,21 @@
 <div class="row">
+    <mat-form-field class="col-10">
+        <input matInput placeholder="Search..." type="text">
+    </mat-form-field>
+    <div class="col-2">
+        <span class="margin-top-10 pull-right">
+            <a mat-raised-button (click)="openAddArticleModal()" color="primary">ADD NEW ARTICLE</a>
+        </span>
+    </div>
+</div>
+<div class="row">
+    <mat-progress-spinner
+        *ngIf="loadingArticles == true"
+        color="primary"
+        class="spinner"
+        [diameter]="50"
+        mode="indeterminate">
+      </mat-progress-spinner>
     <div class="col-4" *ngFor="let article of articles" >
         <app-article [article]="article" [routerLink]="['/article', article._id]"></app-article>
     </div>

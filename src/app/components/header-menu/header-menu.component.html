@@ -21,16 +21,13 @@
     </div>
   </mat-toolbar> -->
 
-  <mat-toolbar class="fixed-top mat-elevation-z4 navbar">
+  <mat-toolbar class="fixed-top mat-elevation-z4 navbar" color="primary">
       <mat-toolbar-row class="container">
           <span class="mat-subheading-2 page-name">
             <a [routerLink]="['/landing-page']"><b>News</b> Portal</a>
           </span>
           <span *ngFor="let item of menuItems" class="margin-top-2">
             <a [routerLink]="[item.route]" mat-button>{{item.name}}</a>
-          </span>
-        <span class="margin-top-2 add-new-article bg-primary" *ngIf="isLoggedIn">
-            <a mat-button (click)="openAddArticleModal()">Add new article</a>
           </span>
           <span class="spacer"></span>
           <span>
