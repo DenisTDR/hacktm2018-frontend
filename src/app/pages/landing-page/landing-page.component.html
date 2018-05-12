@@ -1,11 +1,7 @@
 <div class="container">
-  <div class="margin-top-30">
-    <button mat-raised-button color="accent">Test Button</button>
-    <div class="col-12">
-      <div class="row">
-        <div class="col-6">Test 1</div>
-        <div class="col-6">Test 2</div>
-      </div>
-    </div>
-  </div>
+    <div class="row">
+        <div class="col-4" *ngFor="let article of articles">
+            <app-article [article]="article"></app-article>
+        </div>
+    </div>      
 </div>
