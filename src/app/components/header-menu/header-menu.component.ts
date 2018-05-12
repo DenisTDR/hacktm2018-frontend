@@ -57,15 +57,9 @@ export class HeaderMenuComponent implements OnInit, OnDestroy {
   private setMenuItems() {
     this.menuItems = []
     const authInfo = this.authService.getAuthInfo();
-    //if (authInfo != null) {
       this.menuItems.push({
-        name: 'About',
-        route: '/wash/wash'
+        name: 'News',
+        route: '/articles'
       });
-      this.menuItems.push({
-        name: 'About',
-        route: '/wash/wash'
-      });
-    //}
   }
 }
