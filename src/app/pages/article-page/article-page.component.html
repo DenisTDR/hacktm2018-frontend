@@ -1,4 +1,4 @@
-<div class="container article-container mat-elevation-z4">
+<!-- <div class="container article-container mat-elevation-z4">
   <div class="row">
     <div class="col-12 article-image">
       <img src="{{article?.thumbnail}}">
@@ -40,4 +40,22 @@
     </div>
   </div>
 </div>
-
+ -->
+ <div class="container mat-elevation-z4 padding-10">
+   <div class="row">
+     <div class="col-12 padding-10">
+        <img src="{{article?.thumbnail}}" class="image">
+     </div>
+     <!-- <div class="col-8">
+        <div class="row margin-top-10">
+          <div class="col-4"><span class="mat-body-2">{{article?.publication?.name}}</span></div>
+          <div class="col-4"></div>
+          <div class="col-4"><span class="mat-body-2 pull-right">{{ article?.date | date : "longDate" }}</span></div>
+        </div>
+        <div class="row margin-top-80">
+          <div class="col-12 articleTitle">{{article?.title}}</div>
+          <div class="col-12 articleCaption">{{article?.articleLead}}</div>
+        </div>
+     </div> -->
+   </div>
+ </div>

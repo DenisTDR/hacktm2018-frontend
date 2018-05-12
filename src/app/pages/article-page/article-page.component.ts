@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Article} from '../../models/article';
 import {ApiService} from '../../services/api.service';
 import {ActivatedRoute} from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-article-page',
@@ -17,10 +18,8 @@ export class ArticlePageComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.sub = this.route.params.subscribe(params => {
         this.id = params['id'];
-        console.log(this.id);
       }
     );
 
@@ -30,7 +29,7 @@ export class ArticlePageComponent implements OnInit {
   private getArticle(id: string) {
     this.api.getArticle(id).subscribe(
       ( data: any ) => {
-        this.article = data.body.result;
+        this.article = data.body.result[0];
       },
       error => {
         console.log(error);
