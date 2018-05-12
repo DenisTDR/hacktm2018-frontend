@@ -1,6 +1,7 @@
-import { RouterModule, Routes } from "@angular/router";
-import { NgModule } from "@angular/core";
-import { LandingPageComponent } from "./pages/landing-page/landing-page.component";
+import { RouterModule, Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+import {ArticlesPageComponent} from './pages/articles-page/articles-page.component';
 
 const routes: Routes = [
       {
@@ -8,15 +9,14 @@ const routes: Routes = [
         component: LandingPageComponent
       },
       {
+        path: 'articles',
+        component: ArticlesPageComponent
+      },
+      {
         path: '',
         redirectTo: 'landing-page/',
         pathMatch: 'full'
       },
-      {
-        path: '**',
-        redirectTo: 'landing-page/',
-        pathMatch: 'full'
-      }
 ];
 
 @NgModule({
@@ -25,5 +25,5 @@ const routes: Routes = [
     ],
     exports: [RouterModule]
 })
-export class AppRoutingModule{
+export class AppRoutingModule {
 }
