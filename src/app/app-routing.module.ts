@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import {ArticlesPageComponent} from './pages/articles-page/articles-page.component';
 import {ArticleComponent} from './components/article/article.component';
+import {ArticlePageComponent} from './pages/article-page/article-page.component';
 
 const routes: Routes = [
       {
@@ -16,6 +17,10 @@ const routes: Routes = [
       {
         path: 'article',
         component: ArticleComponent
+      },
+      {
+        path: 'article/:id',
+        component: ArticlePageComponent
       },
       {
         path: '',

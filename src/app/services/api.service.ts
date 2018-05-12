@@ -9,6 +9,16 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
+  getArticle(id: string ) {
+    return this.http.get('https://adina-teudan.me/api/articles',
+      {
+        params: {
+          _id: id
+        },
+        observe: 'response'
+      });
+  }
+
   getArticles() {
     return this.http.get('https://adina-teudan.me/api/articles');
   }
