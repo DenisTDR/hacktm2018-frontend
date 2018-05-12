@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Article} from '../../models/article';
 import {ApiService} from '../../services/api.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-article-page',
@@ -9,22 +10,32 @@ import {ApiService} from '../../services/api.service';
 })
 export class ArticlePageComponent implements OnInit {
   public article: Article;
-  //@Input() hero: Hero;
+  private sub: any;
+  private id: string;
 
-  constructor(private api: ApiService) {
-
+  constructor(private route: ActivatedRoute, private api: ApiService) {
   }
 
   ngOnInit() {
-   /* this.api.getArticle().subscribe(
+
+    this.sub = this.route.params.subscribe(params => {
+        this.id = params['id'];
+        console.log(this.id);
+      }
+    );
+
+    this.getArticle(this.id);
+  }
+
+  private getArticle(id: string) {
+    this.api.getArticle(id).subscribe(
       ( data: any ) => {
-        this.article = <Article> data.result;
-        console.log(data);
+        this.article = data.body.result;
       },
       error => {
         console.log(error);
       }
-    );*/
+    );
   }
-
 }
+

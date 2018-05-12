@@ -1,9 +1,15 @@
+import {Publication} from './publication';
+
 export interface Article {
-  _id: string;
-  title: string;
-  content: string;
-  url: string;
+  articleBody: string;
+  articleLead: string;
+  created_at: Date;
   date: Date;
-  publication: string;
-  image: string;
+  publication: Publication;
+  thumbnail: string;
+  title: string;
+  updated_at: Date;
+  url: string;
+  _v: number;
+  _id: string;
 }

@@ -1,3 +1,43 @@
-<div>
-  <app-article *ngFor="let article of articles"></app-article>
+<div class="container article-container mat-elevation-z4">
+  <div class="row">
+    <div class="col-12 article-image">
+      <img src="{{article?.thumbnail}}">
+    </div>
+    <div class="col-12 article-content">
+      <div class="row">
+        <div class="col-12 article-content-title">
+          <h4>{{article?.title}}</h4>
+        </div>
+      </div>
+
+      <div class="row">
+        <span class="col-12">
+          <span class="mat-caption">{{ article?.date | date : "longDate" }}</span> | <span class="mat-caption">{{article?.publication?.name}}</span>
+        </span>
+      </div>
+
+      <div class="row">
+        <div class="col-12 article-content-body">
+          {{article?.articleLead}}
+        </div>
+        <div class="col-12 margin-top-10">
+          <a class="mat-caption" style="padding-left:0" href="{{article?.url}}"><b>Read Source</b></a>
+        </div>
+      </div>
+
+      <div class="article-content-votes">
+        <div class="row">
+          <div class="col-12">
+            <a mat-button class="pull-right">
+              <i class="fa fa-thumbs-down" aria-hidden="true"></i>&nbsp;&nbsp;
+            </a>
+            <a mat-button class="pull-right">
+              <i class="fa fa-thumbs-up" aria-hidden="true"></i>&nbsp;&nbsp;
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
