@@ -1,0 +1,44 @@
+<h1 class="mat-title">
+    <b>News</b> Portal<span> | Register </span>
+  </h1>
+  
+  <form [formGroup]="registerForm" (submit)="formSubmit($event)">
+    <div>
+      <mat-form-field class="col-12">
+        <input matInput placeholder="Email" formControlName="email">
+        <mat-error *ngIf="registerForm.controls['email'].hasError('required')">
+          You need to enter an email.
+        </mat-error>
+        <mat-error *ngIf="registerForm.controls['email'].hasError('pattern')">
+          You need to add a valid email.
+        </mat-error>
+      </mat-form-field>
+      <div formGroupName="passwords">
+        <mat-form-field class="col-12">
+          <input matInput placeholder="Password" type="password" formControlName="password">
+          <mat-error *ngIf="passwordsFormGroup.controls['password'].hasError('required')">
+            You need to enter a password.
+          </mat-error>
+          <mat-error *ngIf="passwordsFormGroup.controls['password'].hasError('pattern')">
+            Minimum lenght is {{minPasswordLength}}.
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="col-12">
+          <input matInput placeholder="Confirm password" type="password" formControlName="repeatPassword">
+          <mat-error *ngIf="passwordsFormGroup.controls['repeatPassword'].hasError('required')">
+            You need to confirm the password.
+          </mat-error>
+          <mat-error *ngIf="passwordsFormGroup.controls['repeatPassword'].hasError('areEqual')">
+            Password confirmation doesn't match password
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="col-12 margin-top-10 margin-bottom-10">
+      <button mat-raised-button [color]="'primary'" class="col-12">
+        REGISTER
+        <i class="fa fa-spinner fa-pulse" *ngIf="status == 'loading'"></i>
+      </button>
+    </div>
+  </form>
+  

@@ -1,0 +1,35 @@
+<h1 class="mat-title">
+    <b>News</b> Portal<span> | Login </span>
+  </h1>
+  
+  <form [formGroup]="loginForm" (submit)="formSubmit($event)">
+    <div>
+      <mat-form-field class="col-12">
+        <input matInput placeholder="Email" formControlName="email">
+        <mat-error *ngIf="loginForm.controls['email'].hasError('required')">
+          You need to enter an email.
+        </mat-error>
+        <mat-error *ngIf="loginForm.controls['email'].hasError('pattern')">
+          You need to add a valid email.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="col-12 mb-2">
+        <input matInput placeholder="Password" type="password" formControlName="password">
+        <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+          You need to enter a password.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+      <div class="col-12">
+        <button mat-raised-button [color]="'primary'" class="col-12">
+          LOGIN
+          <i class="fa fa-spinner fa-pulse" *ngIf="status == 'loading'"></i>
+        </button>
+      </div>
+      <div class="col-12 margin-top-5 text-center">
+          <button class="btn btn-link padding-0" (click)="$event.preventDefault(); openRegisterModal();">Creează cont nou</button>
+      </div>
+    </div>
+  </form>
+  

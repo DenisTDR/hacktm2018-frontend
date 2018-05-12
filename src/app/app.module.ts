@@ -7,7 +7,11 @@ import { HttpModule } from '@angular/http';
 import { 
   MatButtonModule, 
   MatToolbarModule, 
-  MatMenuModule
+  MatMenuModule,
+  MatDialogModule,
+  MatSnackBarModule,
+  MatInputModule,
+  MatCheckboxModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -15,18 +19,26 @@ import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { HeaderMenuComponent } from './components/header-menu/header-menu.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 const matImportedModule = [
   MatButtonModule,
   MatToolbarModule,
-  MatMenuModule
+  MatMenuModule,
+  MatDialogModule,
+  MatSnackBarModule,
+  MatInputModule,
+  MatCheckboxModule
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingPageComponent,
-    HeaderMenuComponent
+    HeaderMenuComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +49,10 @@ const matImportedModule = [
     RouterModule,
     HttpModule,
     ...matImportedModule
+  ],
+  entryComponents: [
+    LoginComponent,
+    RegisterComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
