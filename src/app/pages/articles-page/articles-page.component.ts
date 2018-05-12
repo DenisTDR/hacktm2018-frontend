@@ -8,17 +8,23 @@ import {ApiService} from '../../services/api.service';
   styleUrls: ['./articles-page.component.scss']
 })
 export class ArticlesPageComponent implements OnInit {
+   public articles: Article[];
 
-  public articles: Article[];
+    constructor( private api: ApiService) {
+    }
 
-  constructor( private api: ApiService) {
-  }
+    ngOnInit() {
+      this.getArticles();
+    }
 
-  ngOnInit() {
+    getArticles()
+    {
       this.api.getArticles().subscribe(
         ( data: any ) => {
           this.articles = <Article[]> data.result;
-          console.log(data);
+          this.articles.push(data.result[0]);
+          this.articles.push(data.result[1]);
+          this.articles.push(data.result[2]);
         },
         error => {
           console.log(error);
