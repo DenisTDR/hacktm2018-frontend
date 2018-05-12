@@ -1,6 +1,7 @@
 .image
 {
-  width: 100%;
+  max-height:300px;
+  width:100%;
 }
 
 .align-flex
@@ -13,10 +14,10 @@
   align-self: flex-end;
 }
 
-.margin-top-80
-{
-  margin-top: 80;
-}
+//.margin-top-80
+//{
+//  margin-top: 80;
+//}
 
 .articleTitle
 {
@@ -33,4 +34,30 @@
     margin-top: 16px;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.article-body {
+  font-size: 14px;
+  line-height: 16px;
+  font-family: 'Lato Light', sans-serif;
+  margin-top: 16px;
+}
+
+.article-highlight-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.article-highlight-container .date-publication-row {
+  flex-grow: 1;
+}
+
+.article-highlight-container .date-publication-row .publication-name {
+  font-family: "Lato Regular", sans-serif;
+  font-size: 14px;
+}
+
+.article-highlight-container .date-publication-row .article-date {
+  font-family: "Lato Light Italic", sans-serif;
+  font-size: 14px;
 }
