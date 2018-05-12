@@ -29,6 +29,9 @@
           <span *ngFor="let item of menuItems" class="margin-top-2">
             <a [routerLink]="[item.route]" mat-button>{{item.name}}</a>
           </span>
+        <span class="margin-top-2 add-new-article bg-primary" *ngIf="isLoggedIn">
+            <a mat-button (click)="openAddArticleModal()">Add new article</a>
+          </span>
           <span class="spacer"></span>
           <span>
             <mat-menu #loginMenu="matMenu" [overlapTrigger]="false">

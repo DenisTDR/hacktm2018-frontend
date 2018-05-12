@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { AuthStatus } from '../../models/authStatus.model';
 import { AuthService } from '../../services/auth.service';
 import { LoginComponent } from '../login/login.component';
+import {AddArticleComponent} from '../add-article/add-article.component';
 
 @Component({
   selector: 'app-header-menu',
@@ -18,8 +19,10 @@ export class HeaderMenuComponent implements OnInit, OnDestroy {
   public menuDisabled: boolean;
   private authStatusSubscription: Subscription = null;
 
-  constructor(private dialog: MatDialog,
-    private authService: AuthService) { 
+  constructor(
+    private loginDialog: MatDialog,
+    private addNewArticleDialog: MatDialog,
+    private authService: AuthService) {
       this.isLoggedIn = false;
       this.authService.getStatus(status => this.authStatusChanged(status));
       this.authStatusSubscription = this.authService.authStatusChanged.subscribe(status => this.authStatusChanged(status));
@@ -38,7 +41,7 @@ export class HeaderMenuComponent implements OnInit, OnDestroy {
 
   public openLoginModal(): void {
     //console.log('openLoginModal');
-    this.dialog.open(LoginComponent, {width: '400px'});
+    this.loginDialog.open(LoginComponent, {width: '400px'});
   }
 
   public logout(): void {
@@ -55,7 +58,7 @@ export class HeaderMenuComponent implements OnInit, OnDestroy {
   }
 
   private setMenuItems() {
-    this.menuItems = []
+    this.menuItems = [];
     const authInfo = this.authService.getAuthInfo();
     //if (authInfo != null) {
       this.menuItems.push({
@@ -67,5 +70,9 @@ export class HeaderMenuComponent implements OnInit, OnDestroy {
         route: '/wash/wash'
       });
     //}
+  }
+
+  public openAddArticleModal() {
+    this.addNewArticleDialog.open(AddArticleComponent, {width: '400px'});
   }
 }

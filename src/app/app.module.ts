@@ -25,6 +25,7 @@ import { ArticlesPageComponent } from './pages/articles-page/articles-page.compo
 import { ArticleComponent } from './components/article/article.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ArticlePageComponent} from './pages/article-page/article-page.component';
+import { AddArticleComponent } from './components/add-article/add-article.component';
 
 const matImportedModule = [
   MatButtonModule,
@@ -45,7 +46,8 @@ const matImportedModule = [
     RegisterComponent,
     ArticlesPageComponent,
     ArticleComponent,
-    ArticlePageComponent
+    ArticlePageComponent,
+    AddArticleComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +62,8 @@ const matImportedModule = [
   ],
   entryComponents: [
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AddArticleComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

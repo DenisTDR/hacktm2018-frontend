@@ -24,4 +24,9 @@ export class ApiService {
   getArticles() {
     return this.http.get(this.constantService.apiUrl + 'api/articles');
   }
+
+  saveArticle(url: string) {
+    let urlObject = { 'url' : url };
+    return this.http.post(this.constantService.apiUrl + 'api/articles', urlObject);
+  }
 }
