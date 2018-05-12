@@ -1,7 +1,7 @@
 <h1 class="mat-title">
     <b>News</b> Portal<span> | Login </span>
   </h1>
-  
+
   <form [formGroup]="loginForm" (submit)="formSubmit($event)">
     <div>
       <mat-form-field class="col-12">
@@ -25,8 +25,7 @@
         </button>
       </div>
       <div class="col-12 margin-top-5 text-center">
-          <button class="btn btn-link padding-0" (click)="$event.preventDefault(); openRegisterModal();">Creează cont nou</button>
+          <button class="btn btn-link padding-0" (click)="$event.preventDefault(); openRegisterModal();">Create new account</button>
       </div>
     </div>
   </form>
-  
