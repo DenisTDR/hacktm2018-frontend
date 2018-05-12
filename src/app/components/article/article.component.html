@@ -1,3 +1,51 @@
-<p>
-  article works!
-</p>
+<div class="container article-container">
+  <div class="row">
+    <div class="col-12 article-image">
+      <img src="{{article.image}}">
+    </div>
+    <div class="col-12 article-content">
+
+      <div class="row">
+        <div class="col-12 article-content-title">
+          {{article.title}}
+        </div>
+      </div>
+
+      <div class="row">
+
+        <div class="col-3 article-content-date">
+          {{article.date | date : "longDate" }}
+        </div>
+
+        <div class="col-9 article-content-publication">
+          {{article.publication}}
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-12 article-content-body">
+          {{article.content}}
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 article-content-votes">
+          <div class="row">
+            <div class="col-8">
+            </div>
+            <div class="col-4">
+              <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> <span class="label"> Upvote</span>
+
+              <i class="fa fa-thumbs-o-down" aria-hidden="true"></i> <span class="label"> Downvote</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+

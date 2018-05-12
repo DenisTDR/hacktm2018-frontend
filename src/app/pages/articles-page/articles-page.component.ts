@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Article} from '../../models/article';
+import {ApiService} from '../../services/api.service';
 
 @Component({
   selector: 'app-articles-page',
@@ -7,11 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticlesPageComponent implements OnInit {
 
-  // private mockArticles: A
+  public articles: Article[];
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor( private api: ApiService) {
   }
 
-}
+  ngOnInit() {
+
+    this.api.getArticles().subscribe(
+      ( data: any ) => {
+        this.articles = <Article[]> data.result;
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+
+  }

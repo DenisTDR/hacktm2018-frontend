@@ -23,6 +23,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ArticlesPageComponent } from './pages/articles-page/articles-page.component';
 import { ArticleComponent } from './components/article/article.component';
+import {HttpClientModule} from '@angular/common/http';
 
 const matImportedModule = [
   MatButtonModule,
@@ -40,7 +41,7 @@ const matImportedModule = [
     LandingPageComponent,
     HeaderMenuComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
     ArticlesPageComponent,
     ArticleComponent
   ],
@@ -52,6 +53,7 @@ const matImportedModule = [
     AppRoutingModule,
     RouterModule,
     HttpModule,
+    HttpClientModule,
     ...matImportedModule
   ],
   entryComponents: [
