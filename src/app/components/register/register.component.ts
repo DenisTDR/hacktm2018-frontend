@@ -25,7 +25,13 @@ export class RegisterComponent implements OnInit {
     private snackBar: MatSnackBar,
     private constants: ConstantsService) { 
       this.registerForm = this.formBuilder.group({
-        email: ['', [Validators.required, Validators.pattern(this.constants.emailRegex)]],
+        username: ['', [Validators.required]],
+        email: ['', [Validators.required]],
+        firstName: ['', [Validators.required]],
+        lastName: ['', [Validators.required]],
+        birthdate: ['', [Validators.required]],
+        city: ['', [Validators.required]],
+        country: ['', [Validators.required]],
         passwords: this.passwordsFormGroup =
           this.formBuilder.group({
             password: ['', [Validators.required,
@@ -40,52 +46,25 @@ export class RegisterComponent implements OnInit {
         return;
       }
       const model: RegisterModel = {
+        username: this.registerForm.value.username,
         email: this.registerForm.value.email,
+        firstName: this.registerForm.value.firstName,
+        lastName: this.registerForm.value.lastName,
+        birthdate: this.registerForm.value.birthdate,
+        city: this.registerForm.value.city,
+        country: this.registerForm.value.country,
         password: this.passwordsFormGroup.value.password,
       };
       this.status = 'loading';
       this.authService.register(model).subscribe(result => {
           this.status = 'success';
-          this.snackBar.open('Te-ai înregistrat cu succes! Vei primi un email de confirmare.', 'Ok', {
+          this.snackBar.open('Register successfuly', 'Ok', {
             duration: 10000,
           });
           this.dialogRef.close();
         },
         error => {
-          this.status = 'error';
-          if (!error.status) {
-            this.snackBar.open('Nu există conexiune la internet', 'Ok', {
-              duration: 10000
-            });
-          } else if (error._body != null) {
-            if(error.status == 401)
-            {
-              this.snackBar.open('Nu aveți acces la aceasta funcționalitate', 'Ok', {
-                duration: 10000
-              });
-            }
-            else if(error.status == 500)
-            {
-              this.snackBar.open('A apărut o eroare neașteptată', 'Ok', {
-                duration: 10000
-              });
-            }
-            else {
-              const errorBody = error['_body'];
-              //console.log(errorBody);
-              if (errorBody && typeof errorBody === 'string' && errorBody.indexOf('[') === 0) {
-                const errors = JSON.parse(errorBody);
-                const errorDescriptions: string[] = [];
-                errors.forEach(err => errorDescriptions.push(err.description));
-                this.errorMessage = errorDescriptions.join('<br>');
-              } else {
-                this.errorMessage = typeof errorBody === 'string' ? errorBody : '';
-              }
-              this.snackBar.open(this.errorMessage.replace(new RegExp('<br>', 'g'), ','), 'Ok', {
-                duration: 10000,
-              });
-            }
-          }
+          console.log(error);
         });
     }
 
