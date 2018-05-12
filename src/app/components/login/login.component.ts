@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     private constantsService: ConstantsService) { 
       
       this.loginForm = this.formBuilder.group({
-        'email': ['', [Validators.required, Validators.pattern(this.constantsService.emailRegex)]],
+        'username': ['', [Validators.required]],
         'password': ['', [Validators.required]]
       });
     }
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
       return;
     }
     const model: any = this.loginForm.value;
-    model.username = model.email;
+    model.username = model.username;
     this.authService.login(this.loginForm.value).subscribe(response => {
         this.snackBar.open('Login successfully!', 'Ok', {
           duration: 10000,
@@ -87,7 +87,7 @@ export class LoginComponent implements OnInit {
     //console.log('openRegisterModal');
     this.dialogRef.close(false);
     setTimeout(() => {
-      this.dialog.open(RegisterComponent, {width: '400px'});
+      this.dialog.open(RegisterComponent, {width: '600px'});
     }, 500);
   }
 }

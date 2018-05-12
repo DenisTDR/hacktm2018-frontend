@@ -19,7 +19,11 @@ export class HeaderMenuComponent implements OnInit, OnDestroy {
   private authStatusSubscription: Subscription = null;
 
   constructor(private dialog: MatDialog,
-    private authService: AuthService) { }
+    private authService: AuthService) { 
+      this.isLoggedIn = false;
+      this.authService.getStatus(status => this.authStatusChanged(status));
+      this.authStatusSubscription = this.authService.authStatusChanged.subscribe(status => this.authStatusChanged(status));
+    }
 
   ngOnInit() {
     this.setMenuItems();
@@ -37,7 +41,7 @@ export class HeaderMenuComponent implements OnInit, OnDestroy {
     this.dialog.open(LoginComponent, {width: '400px'});
   }
 
-  public doLogout(): void {
+  public logout(): void {
     this.authService.logout();
   }
 

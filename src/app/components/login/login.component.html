@@ -5,12 +5,9 @@
   <form [formGroup]="loginForm" (submit)="formSubmit($event)">
     <div>
       <mat-form-field class="col-12">
-        <input matInput placeholder="Email" formControlName="email">
-        <mat-error *ngIf="loginForm.controls['email'].hasError('required')">
-          You need to enter an email.
-        </mat-error>
-        <mat-error *ngIf="loginForm.controls['email'].hasError('pattern')">
-          You need to add a valid email.
+        <input matInput placeholder="Username" formControlName="username">
+        <mat-error *ngIf="loginForm.controls['username'].hasError('required')">
+          You need to enter an username.
         </mat-error>
       </mat-form-field>
       <mat-form-field class="col-12 mb-2">

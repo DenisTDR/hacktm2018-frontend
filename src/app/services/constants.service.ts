@@ -13,6 +13,6 @@ export class ConstantsService {
   }
 
   private getApiUrl(): void {
-      this.apiUrl = "localhost";
+      this.apiUrl = "https://adina-teudan.me/";
   }
 }

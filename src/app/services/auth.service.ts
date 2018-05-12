@@ -32,9 +32,13 @@ export class AuthService {
   }
 
   public login(model: LoginModel): Observable<any> {
-    const url = this.constantsService.apiUrl + 'account/login';
-    return this.http.post(url, model).pipe(map(response => {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+    });
+    const url = this.constantsService.apiUrl + 'api/auth/login';
+    return this.http.post(url, model, { headers: headers }).pipe(map(response => {
         const data = response.json();
+        console.log(data);
         this.doLogin(data);
         return data;
       })
@@ -65,9 +69,12 @@ export class AuthService {
     return null;
   }
 
-  public register(model: RegisterModel): Observable<any> {
-    const url = `${this.constantsService.apiUrl}Account/Register`;
-    return this.http.post(url, model, this.options).pipe(
+  public register(model: RegisterModel): Observable<any> {4
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+    });
+    const url = this.constantsService.apiUrl + 'api/auth/register';
+    return this.http.post(url, model, {headers: headers}).pipe(
       map(response => response.json())
     );
   }
@@ -85,7 +92,7 @@ export class AuthService {
   }
 
   public getAuthToken() {
-    return "Bearer " + this.authToken;
+    return "JWT " + this.authToken;
   }
 
   public isLoggedIn() {
@@ -95,23 +102,24 @@ export class AuthService {
   private parseJwt(token: string) {
     let base64Url = token.split('.')[1];
     let base64 = base64Url.replace('-', '+').replace('_', '/');
+    console.log(window.atob(base64));
     return JSON.parse(window.atob(base64));
   }
 
   private doLogin(authInfo: any) {
-    let name = this.parseJwt(authInfo.access_token).name;
+    let name = this.parseJwt(authInfo.token).username;
     let authInfoObject: any = {
       name: name,
-      tokenTime: authInfo.expires_in,
-      tokenDate: new Date() 
+      user: authInfo.user,
+      expires: authInfo.expires,
+      token: authInfo.token
     }
-    this.localStorage.set("authToken", authInfo.access_token);
+    this.localStorage.set("authToken", authInfo.token);
     this.localStorage.set("authInfo", authInfoObject);
-
     this.loadLocal();
 
     this.authHeaders.delete('Authorization');
-    this.authHeaders.set('Authorization', 'Bearer ' + this.authToken);
+    this.authHeaders.set('Authorization', 'JWT ' + this.authToken);
 
     this.authStatusChanged.next({isLoggedIn: true});
   }
@@ -125,7 +133,7 @@ export class AuthService {
     let token = this.localStorage.get('authToken');
     if(token && putAuthToken) {
         headers.delete('Authorization');
-        headers.set('Authorization', 'Bearer ' + token);
+        headers.set('Authorization', 'JWT ' + token);
     }
     return headers;
   }

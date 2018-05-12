@@ -5,14 +5,51 @@
   <form [formGroup]="registerForm" (submit)="formSubmit($event)">
     <div>
       <mat-form-field class="col-12">
-        <input matInput placeholder="Email" formControlName="email">
-        <mat-error *ngIf="registerForm.controls['email'].hasError('required')">
-          You need to enter an email.
-        </mat-error>
-        <mat-error *ngIf="registerForm.controls['email'].hasError('pattern')">
-          You need to add a valid email.
+        <input matInput placeholder="Username" formControlName="username">
+        <mat-error *ngIf="registerForm.controls['username'].hasError('required')">
+          You need to enter an username.
         </mat-error>
       </mat-form-field>
+      <mat-form-field class="col-12">
+          <input matInput placeholder="Email" formControlName="email">
+          <mat-error *ngIf="registerForm.controls['email'].hasError('required')">
+            You need to enter an email.
+          </mat-error>
+        </mat-form-field>
+        <div class="row col-12">
+          <mat-form-field class="col-6">
+            <input matInput placeholder="First Name" formControlName="firstName">
+            <mat-error *ngIf="registerForm.controls['firstName'].hasError('required')">
+              You need to enter an first name.
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="col-6">
+            <input matInput placeholder="Last Name" formControlName="lastName">
+            <mat-error *ngIf="registerForm.controls['lastName'].hasError('required')">
+              You need to enter an last name.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <mat-form-field class="col-12">
+          <input matInput placeholder="Birthdate" formControlName="birthdate">
+          <mat-error *ngIf="registerForm.controls['birthdate'].hasError('required')">
+            You need to enter an birthdate.
+          </mat-error>
+        </mat-form-field>
+        <div class="row col-12">
+          <mat-form-field class="col-6">
+            <input matInput placeholder="City" formControlName="city">
+            <mat-error *ngIf="registerForm.controls['city'].hasError('required')">
+              You need to enter an city.
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="col-6">
+            <input matInput placeholder="Country" formControlName="country">
+            <mat-error *ngIf="registerForm.controls['country'].hasError('required')">
+              You need to enter an country.
+            </mat-error>
+          </mat-form-field>
+        </div>
       <div formGroupName="passwords">
         <mat-form-field class="col-12">
           <input matInput placeholder="Password" type="password" formControlName="password">
