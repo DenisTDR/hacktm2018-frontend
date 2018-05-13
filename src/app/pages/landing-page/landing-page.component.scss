@@ -7,6 +7,88 @@
     -o-background-size: cover;
     background-size: cover;
 
-  max-height:600px;
-  min-height:300px;
+  //width: 100%;
+
+  min-height: 300px;
+
+  position:absolute;
+  top:55px;
+  left:0;
+  right:0;
+}
+
+
+
+@media screen and (max-width: 700px) {
+  .site-container {
+    min-height: 300px;
+    max-height: 400px;
+  }
+
+  .highlight-container {
+    position: relative;
+    //top:400px;
+    //left: 200px;
+  }
+
+  .icon-row {
+
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .site-container {
+    min-height:500px;
+    max-height:700px;
+    }
+
+  .highlight-container {
+    position: absolute;
+    top:260px;
+    left: 200px;
+  }
+
+  .icon-row {
+    position:absolute;
+    top:600px;
+  }
+
+}
+
+.highlight-container {
+  background: rgba(27,94,32,0.8);
+  color: white;
+  padding: 50px;
+
+}
+
+.highlight-lead {
+  font-size: 36px;
+  font-family: 'Merriweather Bold', serif;
+}
+
+.highlight-subtitle {
+  margin-top:20px;
+  font-size: 24px;
+  font-family: 'Lato Regular', serif;
+}
+
+
+.icon-row img {
+  max-height:100px;
+}
+
+.icon-row .icon-group {
+  text-align: center;
+}
+
+.icon-row .icon-group h3 {
+  text-transform: uppercase;
+  font-family: 'Lato Semibold', serif;
+  font-size:24px;
+}
+
+.icon-row .icon-group h4 {
+  font-family: 'Lato Light', serif;
+  font-size:18px;
 }
