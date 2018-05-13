@@ -22,11 +22,28 @@ export class ArticlesPageComponent implements OnInit {
     this.getArticles();
   }
 
+<<<<<<< HEAD
+    getArticles()
+    {
+      this.loadingArticles = true;
+      this.api.getArticles().subscribe(
+        ( data: any ) => {
+          this.articles = <Article[]> data.result.reverse();
+          this.assignCopy();//when you fetch collection from server.
+          this.loadingArticles = false;
+        },
+        error => {
+          this.loadingArticles = false;
+          console.log(error);
+        }
+      );
+    }
+=======
   getArticles() {
     this.loadingArticles = true;
     this.api.getArticles().subscribe(
       (data: any) => {
-          this.articles = <Article[]> data.result.reverse();
+        this.articles = <Article[]> data.result;
         this.assignCopy(); // when you fetch collection from server.
         this.loadingArticles = false;
       },
@@ -36,6 +53,7 @@ export class ArticlesPageComponent implements OnInit {
       }
     );
   }
+>>>>>>> 8ec238258767b787c0550364a7af529f73b26b82
 
   public openAddArticleModal() {
     const dialogRef = this.addNewArticleDialog.open(AddArticleComponent, {width: '400px'});
