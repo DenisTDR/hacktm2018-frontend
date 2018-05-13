@@ -77,14 +77,14 @@
         <div class="col-3"></div>
         <div class="col-3 button-center">
           <a mat-button color="primary" (click)="saveVote(true)" [ngClass]="{activeGreen: article?.vote == true}"
-          matTooltip="Up" position="above">
+          matTooltip="Confirm" position="above">
             <i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
             {{article.state.upW}}
           </a>
         </div>
         <div class="col-3 button-center">
           <a mat-button color="primary" (click)="saveVote(false)" [ngClass]="{activeRed: article?.vote == false}"
-          matTooltip="Down" position="above">
+          matTooltip="Deny" position="above">
             <i class="fa fa-times" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
             {{article.state.downW}}
           </a>
