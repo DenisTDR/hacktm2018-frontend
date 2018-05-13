@@ -13,6 +13,6 @@ export class ArticleComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.article);
+    //console.log(this.article);
   }
 }
