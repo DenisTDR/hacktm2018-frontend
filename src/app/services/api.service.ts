@@ -14,22 +14,23 @@ export class ApiService {
     private constantService: ConstantsService) { }
 
   getArticle(id: string ) {
-    return this.http.get('https://adina-teudan.me/api/articles',
+    return this.http.get(this.constantService.apiUrl + 'api/articles',
       {
         params: {
           _id: id
         },
-        observe: 'response'
-      });
+        observe: 'response',
+        headers: this.authService.authHeaders
+      }, );
   }
 
   getArticles() {
-    return this.http.get(this.constantService.apiUrl + 'api/articles');
+    return this.http.get(this.constantService.apiUrl + 'api/articles', this.authService.getOptions(true));
   }
 
   saveArticle(url: string) {
     let urlObject = { 'url' : url };
-    return this.http.post(this.constantService.apiUrl + 'api/articles', urlObject);
+    return this.http.post(this.constantService.apiUrl + 'api/articles', urlObject, this.authService.getOptions(true));
   }
 
   saveVote(id: string, value: string) {
