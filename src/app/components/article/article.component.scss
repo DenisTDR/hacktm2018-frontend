@@ -86,3 +86,11 @@ a {
 .fa-check {
   color: #4CAF50 !important;
 }
+
+.align-flex-right
+{
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  align-items: center;
+}

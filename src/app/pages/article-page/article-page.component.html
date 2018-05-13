@@ -41,14 +41,7 @@
   </div>
 </div>
  -->
- <mat-progress-spinner
-  *ngIf="loading == true"
-  color="primary"
-  class="spinner"
-  [diameter]="50"
-  mode="indeterminate">
-</mat-progress-spinner>
- <div class="container mat-elevation-z4 padding-10" *ngIf="loading == false">
+ <div class="container mat-elevation-z4 padding-10">
    <div class="row">
       <div class="col-lg-4 col-md-6 col-sm-12 padding-10">
           <img src="{{article?.thumbnail}}" class="image">
@@ -73,18 +66,27 @@
         {{article?.articleBody}}
       </div>
     </div>
-    <div class="row margin-top-10">
+    <mat-progress-spinner
+      *ngIf="loading == true"
+      color="primary"
+      class="spinner"
+      [diameter]="50"
+      mode="indeterminate">
+    </mat-progress-spinner>
+    <div class="row margin-top-10" *ngIf="loading == false">
         <div class="col-3"></div>
         <div class="col-3 button-center">
-          <a mat-button color="primary" (click)="saveVote(false)" [ngClass]="{activeRed: article?.vote == false}">
-            <i class="fa fa-times" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-            INFIRM
+          <a mat-button color="primary" (click)="saveVote(true)" [ngClass]="{activeGreen: article?.vote == true}"
+          matTooltip="Up" position="above">
+            <i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+            {{article.state.upW}}
           </a>
         </div>
         <div class="col-3 button-center">
-          <a mat-button color="primary" (click)="saveVote(true)" [ngClass]="{activeGreen: article?.vote == true}">
-            <i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-            CONFIRM
+          <a mat-button color="primary" (click)="saveVote(false)" [ngClass]="{activeRed: article?.vote == false}"
+          matTooltip="Down" position="above">
+            <i class="fa fa-times" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+            {{article.state.downW}}
           </a>
         </div>
         <div class="col-3"></div>
