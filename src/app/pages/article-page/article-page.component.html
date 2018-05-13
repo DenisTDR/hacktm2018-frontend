@@ -42,25 +42,54 @@
 </div>
  -->
  <div class="container mat-elevation-z4 padding-10">
-   <div class="row">
-     <div class="col-lg-4 col-md-6 col-sm-12 padding-10">
-        <img src="{{article?.thumbnail}}" class="image">
-     </div>
-     <div class="col-lg-8 col-md-6 col-sm-12 article-highlight-container">
-        <div class="row date-publication-row">
-          <div class="col-4"><span class="mat-body-2 publication-name">{{article?.publication?.name}}</span></div>
-          <div class="col-4"></div>
-          <div class="col-4"><span class="mat-body-2 pull-right article-date">{{ article?.date | date : "longDate" }}</span></div>
+    <mat-progress-spinner
+      *ngIf="loading == true"
+      color="primary"
+      class="spinner"
+      [diameter]="50"
+      mode="indeterminate">
+    </mat-progress-spinner>
+    <div>
+   <div class="row" *ngIf="loading == false">
+      <div class="col-lg-4 col-md-6 col-sm-12 padding-10">
+          <img src="{{article?.thumbnail}}" class="image">
+      </div>
+      <div class="col-lg-8 col-md-6 col-sm-12 article-highlight-container">
+          <div class="row date-publication-row">
+            <div class="col-4"><span class="mat-body-2 publication-name">{{article?.publication?.name}}</span></div>
+            <div class="col-4"></div>
+            <div class="col-4"><span class="mat-body-2 pull-right article-date">{{ article?.date | date : "longDate" }}</span></div>
+          </div>
+          <div class="row ">
+            <div class="col-12 articleTitle">{{article?.title}}</div>
+            <div class="col-12 articleCaption">{{article?.articleLead}}</div>
+          </div>
+      </div>
+    </div>
+    <div class="row article-body">
+      <div class="col-12" style="white-space: pre-line;">
+        {{article?.articleBody}}
+      </div>
+    </div>
+    <div class="row margin-top-10">
+        <div class="col-3"></div>
+        <div class="col-3 button-center">
+          <a mat-raised-button color="primary" (click)="saveVote('false')">
+            <i class="fa fa-times" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+            <span class="votes">
+              INFIRM
+            </span>
+          </a>
         </div>
-        <div class="row ">
-          <div class="col-12 articleTitle">{{article?.title}}</div>
-          <div class="col-12 articleCaption">{{article?.articleLead}}</div>
+        <div class="col-3 button-center">
+          <a mat-raised-button color="primary" (click)="saveVote('true')">
+            <i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+            <span class="votes">
+              CONFIRM
+            </span>
+          </a>
         </div>
-     </div>
-   </div>
-   <div class="row article-body">
-     <div class="col-12">
-       {{article?.articleBody}}
-     </div>
-   </div>
+        <div class="col-3"></div>
+    </div>
+    </div>
  </div>

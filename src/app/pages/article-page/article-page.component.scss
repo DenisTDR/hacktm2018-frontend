@@ -22,16 +22,16 @@
 .articleTitle
 {
   font-family: 'Merriweather Bold', serif;
-  font-size: 18px;
+  font-size: 24px;
   line-height: 24px;
 }
 
 .articleCaption
 {
-    font-size: 14px;
+    font-size: 12px;
     line-height: 16px;
-    font-family: 'Lato Light', sans-serif;
-    margin-top: 16px;
+    font-family: 'Lato', sans-serif;
+    margin-top: 8px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -41,6 +41,7 @@
   line-height: 16px;
   font-family: 'Lato Light', sans-serif;
   margin-top: 16px;
+  font-weight: 800;
 }
 
 .article-highlight-container {
@@ -60,4 +61,15 @@
 .article-highlight-container .date-publication-row .article-date {
   font-family: "Lato Light Italic", sans-serif;
   font-size: 14px;
+}
+
+a {
+  padding: 4px 10px;
+  color: #212121;
+  text-decoration: none;
+}
+
+.button-center
+{
+  text-align: center
 }

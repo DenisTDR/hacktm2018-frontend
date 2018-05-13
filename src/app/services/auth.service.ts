@@ -7,15 +7,16 @@ import { LoginModel } from '../models/login.model';
 import { Observable } from 'rxjs';
 import { RegisterModel } from '../models/register.model';
 import { map } from 'rxjs/operators';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  public authHeaders: Headers;
-  public noAuthHeaders: Headers;
-  public options: RequestOptions;
+  public authHeaders: HttpHeaders;
+  public noAuthHeaders: HttpHeaders;
+  public options: any;
   public authStatusChanged: EventEmitter<any> = new EventEmitter();
   private authInfo: any = null;
   private authToken: string = null;
@@ -28,7 +29,7 @@ export class AuthService {
 
       this.noAuthHeaders = this.makeHeaders(false, true);
       this.authHeaders = this.makeHeaders(true, true);
-      this.options = new RequestOptions({headers: this.authHeaders});
+      this.options = {headers: this.authHeaders};
   }
 
   public login(model: LoginModel): Observable<any> {
@@ -51,7 +52,7 @@ export class AuthService {
     
     this.loadLocal();
     
-    this.authHeaders.delete('Authorization');
+    this.authHeaders = this.authHeaders.delete('Authorization');
     const status = { isLoggedIn: this.isLoggedIn() };
     
     this.authStatusChanged.next(status);
@@ -79,16 +80,9 @@ export class AuthService {
     );
   }
 
-  public getOptions(needsAuth?: boolean, needsJson?: boolean) {
-    let isValid = this.isTokenValid();
-    if(isValid == true)
-    {  
+  public getOptions(needsAuth?: boolean) {
       const headers = needsAuth ? this.authHeaders : this.noAuthHeaders;
-      return new RequestOptions({headers: headers});
-    }
-    else {
-      this.logout();
-    }
+      return {headers: headers};
   }
 
   public getAuthToken() {
@@ -118,22 +112,23 @@ export class AuthService {
     this.localStorage.set("authInfo", authInfoObject);
     this.loadLocal();
 
-    this.authHeaders.delete('Authorization');
-    this.authHeaders.set('Authorization', 'JWT ' + this.authToken);
+    this.authHeaders = this.authHeaders.delete('Authorization');
+    this.authHeaders = this.authHeaders.set('Authorization', this.authToken);
 
     this.authStatusChanged.next({isLoggedIn: true});
   }
 
-  private makeHeaders(putAuthToken? : boolean, putContentTypeJson? : boolean): Headers {
-    const headers = new Headers();
+  private makeHeaders(putAuthToken? : boolean, putContentTypeJson? : boolean): HttpHeaders {
+    let headers = new HttpHeaders();
 
     if(putContentTypeJson == true)
       headers.append('Content-Type', 'application/json');
 
     let token = this.localStorage.get('authToken');
+    console.log(token);
     if(token && putAuthToken) {
-        headers.delete('Authorization');
-        headers.set('Authorization', 'JWT ' + token);
+      headers = headers.delete('Authorization');
+      headers = headers.set('Authorization', token);
     }
     return headers;
   }
