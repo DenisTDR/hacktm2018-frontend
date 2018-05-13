@@ -28,6 +28,10 @@ export class ApiService {
     return this.http.get(this.constantService.apiUrl + 'api/articles', this.authService.getOptions(true));
   }
 
+  getProfile() {
+    return this.http.get(this.constantService.apiUrl + 'api/users/me', this.authService.getOptions(true));
+  }
+
   saveArticle(url: string) {
     let urlObject = { 'url' : url };
     return this.http.post(this.constantService.apiUrl + 'api/articles', urlObject, this.authService.getOptions(true));

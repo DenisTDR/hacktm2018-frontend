@@ -6,7 +6,7 @@
 }
 
 .article-container .article-image {
-  height:100%;
+  height:200px;
   min-height: 100px;
   display:block;
   line-height:200px;
@@ -35,6 +35,9 @@
   font-family: 'Merriweather Bold', serif;
   font-size: 18px;
   line-height: 24px;
+  height: 4em;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .article-content .article-content-date {
@@ -55,6 +58,7 @@
   font-family: 'Lato Light', sans-serif;
   margin-top: 16px;
   overflow: hidden;
+  max-height: 100px;
   text-overflow: ellipsis;
 }
 
@@ -85,4 +89,12 @@ a {
 
 .fa-check {
   color: #4CAF50 !important;
+}
+
+.align-flex-right
+{
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  align-items: center;
 }

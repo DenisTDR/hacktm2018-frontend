@@ -1,3 +1,51 @@
-<p>
-  profile works!
-</p>
+<div class="row">
+  <div class="row">
+    <div class="col-4">
+        <img src="{{profile?.profilePicture}}" class="image">
+    </div>
+    <div class="col-8">
+      <div class="row">
+        <label class="col-4">Username</label>
+        <label class="col-8">
+          <span class="mat-body-2">{{profile?.username}}</span>
+        </label>
+      </div>
+      <div class="row">
+        <label class="col-4">Email</label>
+        <label class="col-8">
+          <span class="mat-body-2">{{profile?.email}}</span>
+        </label>
+      </div>
+      <div class="row">
+        <label class="col-4">First Name</label>
+        <label class="col-8">
+          <span class="mat-body-2">{{profile?.firstName}}</span>
+        </label>
+      </div>
+      <div class="row">
+        <label class="col-4">Last Name</label>
+        <label class="col-8">
+          <span class="mat-body-2">{{profile?.lastName}}</span>
+        </label>
+      </div>
+      <div class="row">
+        <label class="col-4">Birthdate</label>
+        <label class="col-8">
+          <span class="mat-body-2">{{profile?.birthdate}}</span>
+        </label>
+      </div>
+      <div class="row">
+        <label class="col-4">City</label>
+        <label class="col-8">
+          <span class="mat-body-2">{{profile?.city}}</span>
+        </label>
+      </div>
+      <div class="row">
+        <label class="col-4">Country</label>
+        <label class="col-8">
+          <span class="mat-body-2">{{profile?.country}}</span>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>

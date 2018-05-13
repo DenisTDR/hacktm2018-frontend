@@ -20,11 +20,11 @@ export class AuthService {
   public authStatusChanged: EventEmitter<any> = new EventEmitter();
   private authInfo: any = null;
   private authToken: string = null;
-  
+
   constructor(private http: Http,
     private constantsService: ConstantsService,
     private localStorage: LocalStorageService,
-    private router: Router) { 
+    private router: Router) {
       this.loadLocal();
 
       this.noAuthHeaders = this.makeHeaders(false, true);
@@ -39,7 +39,7 @@ export class AuthService {
     const url = this.constantsService.apiUrl + 'api/auth/login';
     return this.http.post(url, model, { headers: headers }).pipe(map(response => {
         const data = response.json();
-        console.log(data);
+        //console.log(data);
         this.doLogin(data);
         return data;
       })
@@ -49,12 +49,12 @@ export class AuthService {
   public logout(): void {
     this.localStorage.clear('authInfo');
     this.localStorage.clear('authToken');
-    
+
     this.loadLocal();
-    
+
     this.authHeaders = this.authHeaders.delete('Authorization');
     const status = { isLoggedIn: this.isLoggedIn() };
-    
+
     this.authStatusChanged.next(status);
     this.router.navigate(['/landing-page']);
   }
@@ -70,7 +70,7 @@ export class AuthService {
     return null;
   }
 
-  public register(model: RegisterModel): Observable<any> {4
+  public register(model: RegisterModel): Observable<any> {
     let headers = new Headers({
       'Content-Type': 'application/json',
     });
@@ -96,7 +96,7 @@ export class AuthService {
   private parseJwt(token: string) {
     let base64Url = token.split('.')[1];
     let base64 = base64Url.replace('-', '+').replace('_', '/');
-    console.log(window.atob(base64));
+    //console.log(window.atob(base64));
     return JSON.parse(window.atob(base64));
   }
 
@@ -125,7 +125,7 @@ export class AuthService {
       headers.append('Content-Type', 'application/json');
 
     let token = this.localStorage.get('authToken');
-    console.log(token);
+    //console.log(token);
     if(token && putAuthToken) {
       headers = headers.delete('Authorization');
       headers = headers.set('Authorization', token);
