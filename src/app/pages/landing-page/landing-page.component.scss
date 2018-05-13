@@ -32,7 +32,13 @@
   }
 
   .icon-row {
+    position:absolute;
+    top:400px;
+  }
 
+  .articles-wrapper {
+    position:absolute;
+    top:700px;
   }
 }
 
@@ -51,6 +57,11 @@
   .icon-row {
     position:absolute;
     top:600px;
+  }
+
+  .articles-wrapper {
+    position:absolute;
+    top:900px;
   }
 
 }

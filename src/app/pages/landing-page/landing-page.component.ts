@@ -16,14 +16,14 @@ export class LandingPageComponent implements OnInit {
     this.getArticles();
   }
 
-  getArticles()
-  {
+  getArticles() {
     this.api.getArticles().subscribe(
       ( data: any ) => {
-        this.articles = <Article[]> data.result;
-        this.articles.push(data.result[0]);
-        this.articles.push(data.result[1]);
-        this.articles.push(data.result[2]);
+        this.articles = [];
+        const articles = <Article[]> data.result;
+        this.articles[0] = articles[0];
+        this.articles[1] = articles[1];
+        this.articles[2] = articles[2];
       },
       error => {
         console.log(error);

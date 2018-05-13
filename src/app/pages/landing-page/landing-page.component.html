@@ -2,7 +2,9 @@
 
   <div class="highlight-container">
     <div class="highlight-lead">Not everything is what it seems!</div>
-    <div class="highlight-subtitle">What are other people saying about that story you have just read? Do you think it is true?</div>
+    <div class="highlight-subtitle">What are other people saying about that story you have just read? Do you think it is
+      true?
+    </div>
   </div>
 </div>
 
@@ -30,4 +32,12 @@
   </div>
 </div>
 
+<div class="container articles-wrapper">
+  <div class="row">
+
+    <div class="col-4" *ngFor="let article of articles">
+      <app-article [article]="article" [routerLink]="['/article', article._id]"></app-article>
+    </div>
+  </div>
+</div>
 
