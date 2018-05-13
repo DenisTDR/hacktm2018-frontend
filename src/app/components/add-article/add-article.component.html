@@ -1,11 +1,18 @@
-<h1 mat-dialog-title>Add new article</h1>
-<div mat-dialog-content>
-  <p>URL to article</p>
-  <mat-form-field>
-    <input matInput [(ngModel)]="url">
-  </mat-form-field>
+<h1 class="mat-title">
+  <b>Add</b> Article
+</h1>
+<div class="row">
+<mat-form-field class="col-12">
+  <input matInput placeholder="URL to article" [(ngModel)]="url">
+</mat-form-field>
 </div>
-<div mat-dialog-actions>
-  <button mat-button mat-dialog-close>Close</button>
-  <button mat-button [mat-dialog-close]="url" (click)="addNewArticle()">Ok</button>
+<div class="row">
+  <div class="col-12">
+      <button mat-raised-button color="primary" class="pull-right margin-left-5" (click)="addNewArticle()">
+        ADD
+        <i class="fa fa-spinner fa-pulse" *ngIf="loading == true"></i>
+      </button>
+      <button mat-button class="pull-right" mat-dialog-close>CLOSE</button>
+  </div>
 </div>
+

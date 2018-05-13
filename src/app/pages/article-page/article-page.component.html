@@ -66,7 +66,7 @@
     <div class="row margin-top-10">
         <div class="col-3"></div>
         <div class="col-3 button-center">
-          <a mat-button color="primary" (click)="saveVote('false')" [ngClass]="{activeRed: article?.vote == false}">
+          <a mat-button color="primary" (click)="saveVote(false)" [ngClass]="{activeRed: article?.vote == false}">
             <i class="fa fa-times" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
             <span class="votes">
               INFIRM
@@ -74,7 +74,7 @@
           </a>
         </div>
         <div class="col-3 button-center">
-          <a mat-button color="primary" (click)="saveVote('true')" [ngClass]="{activeGreen: article?.vote == true}">
+          <a mat-button color="primary" (click)="saveVote(true)" [ngClass]="{activeGreen: article?.vote == true}">
             <i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
             <span class="votes">
               CONFIRM

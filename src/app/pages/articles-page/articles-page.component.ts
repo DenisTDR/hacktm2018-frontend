@@ -11,7 +11,8 @@ import { AddArticleComponent } from '../../components/add-article/add-article.co
 })
 export class ArticlesPageComponent implements OnInit {
    public articles: Article[];
-  public loadingArticles = false;
+   public filteredItems: Article[];
+   public loadingArticles = false;
     constructor( private api: ApiService,
       private addNewArticleDialog: MatDialog) {
     }
@@ -26,6 +27,7 @@ export class ArticlesPageComponent implements OnInit {
       this.api.getArticles().subscribe(
         ( data: any ) => {
           this.articles = <Article[]> data.result;
+          this.assignCopy();//when you fetch collection from server.
           this.loadingArticles = false;
         },
         error => {
@@ -37,5 +39,15 @@ export class ArticlesPageComponent implements OnInit {
 
     public openAddArticleModal() {
       this.addNewArticleDialog.open(AddArticleComponent, {width: '400px'});
+    }
+
+    assignCopy(){
+      this.filteredItems = Object.assign([], this.articles);
+    }
+    filterItem(value){
+        if(!value) this.assignCopy(); //when nothing has typed
+        this.filteredItems = Object.assign([], this.articles).filter(
+          item => item.title.toLowerCase().indexOf(value.toLowerCase()) > -1
+        )
     }
   }
