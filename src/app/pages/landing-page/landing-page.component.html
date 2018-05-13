@@ -30,4 +30,8 @@
   </div>
 </div>
 
-
+<div class="row articles-wrapper">
+  <div class="col-4" *ngFor="let article of articles">
+    <app-article [article]="article" [routerLink]="['/article', article._id]"></app-article>
+  </div>
+</div>
