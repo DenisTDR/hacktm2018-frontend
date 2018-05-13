@@ -26,7 +26,7 @@ export class ArticlesPageComponent implements OnInit {
       this.loadingArticles = true;
       this.api.getArticles().subscribe(
         ( data: any ) => {
-          this.articles = <Article[]> data.result;
+          this.articles = <Article[]> data.result.reverse();
           this.assignCopy();//when you fetch collection from server.
           this.loadingArticles = false;
         },
