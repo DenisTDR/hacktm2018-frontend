@@ -24,7 +24,9 @@
   <mat-toolbar class="fixed-top mat-elevation-z4 navbar" color="primary">
       <mat-toolbar-row class="container">
           <span class="mat-subheading-2 page-name">
-            <a [routerLink]="['/landing-page']"><b>News</b> Portal</a>
+            <a [routerLink]="['/landing-page']">
+              <img src="../../../assets/logo/logoVeritastory.png" style="width: 150px ">
+            </a>
           </span>
           <span *ngFor="let item of menuItems" class="margin-top-2">
             <a [routerLink]="[item.route]" mat-button>{{item.name}}</a>
