@@ -21,20 +21,21 @@
           {{article.articleLead}}
         </div>
         <div class="col-12 margin-top-10">
-          <a class="mat-caption" style="padding-left:0" href="{{article.url}}"><b>Read Source</b></a>
+          <a mat-button class="mat-caption" style="padding-left:0" href="{{article.url}}"><b>Read Source</b></a>
         </div>
       </div>
 
       <div class="article-content-votes">
         <div class="row">
           <div class="col-12">
-            <a class="pull-right">
+            <span class="mat-caption">Score</span>
+            <a class="pull-right" matTooltip="Up" position="above">
               <i class="fa fa-times" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-              <span class="votes">{{article.state.down}}</span>
+              <span class="votes">{{article.state.downW}}</span>
             </a>
-            <a class="pull-right">
+            <a class="pull-right" matTooltip="Down" position="above">
               <i class="fa fa-check" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-              <span class="votes">{{article.state.up}}</span>
+              <span class="votes">{{article.state.upW}}</span>
             </a>
           </div>
         </div>
