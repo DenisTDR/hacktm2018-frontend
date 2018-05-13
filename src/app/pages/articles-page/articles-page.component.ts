@@ -38,7 +38,11 @@ export class ArticlesPageComponent implements OnInit {
     }
 
     public openAddArticleModal() {
-      this.addNewArticleDialog.open(AddArticleComponent, {width: '400px'});
+      const dialogRef = this.addNewArticleDialog.open(AddArticleComponent, {width: '400px'});
+      dialogRef.afterClosed().subscribe(res => {
+        if(res == "OK")
+          this.getArticles();
+      });
     }
 
     assignCopy(){

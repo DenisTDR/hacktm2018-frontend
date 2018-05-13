@@ -4,6 +4,7 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
 import {ArticlesPageComponent} from './pages/articles-page/articles-page.component';
 import {ArticleComponent} from './components/article/article.component';
 import {ArticlePageComponent} from './pages/article-page/article-page.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
       {
@@ -13,6 +14,10 @@ const routes: Routes = [
       {
         path: 'articles',
         component: ArticlesPageComponent
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent
       },
       {
         path: 'article',

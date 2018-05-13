@@ -46,12 +46,13 @@ export class ArticlePageComponent implements OnInit {
   }
 
   public saveVote(value: any) {
-    this.loading = false;
+    this.loading = true;
     this.api.saveVote(this.article._id, value).subscribe(
       ( data: any ) => {
         this.snackBar.open('Thank you for your vote!', 'Ok', {
           duration: 10000,
         });
+        this.getArticle(this.id);
         this.loading = false;
       },
       error => {
