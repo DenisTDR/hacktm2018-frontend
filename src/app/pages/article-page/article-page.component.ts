@@ -14,12 +14,12 @@ export class ArticlePageComponent implements OnInit {
   public article: Article;
   private sub: any;
   private id: string;
-  private loading: boolean;
+  public loading: boolean;
 
   constructor(
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute,
     private api: ApiService,
-    private snackBar: MatSnackBar,) {
+    private snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
@@ -45,12 +45,11 @@ export class ArticlePageComponent implements OnInit {
     );
   }
 
-  public saveVote(value: any)
-  {
+  public saveVote(value: any) {
     this.loading = false;
     this.api.saveVote(this.article._id, value).subscribe(
       ( data: any ) => {
-        this.snackBar.open("Thank you for your vote!", 'Ok', {
+        this.snackBar.open('Thank you for your vote!', 'Ok', {
           duration: 10000,
         });
         this.loading = false;

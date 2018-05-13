@@ -12,4 +12,5 @@ export interface Article {
   url: string;
   _v: number;
   _id: string;
+  state: any;
 }
