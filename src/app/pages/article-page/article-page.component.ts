@@ -36,7 +36,7 @@ export class ArticlePageComponent implements OnInit {
     this.api.getArticle(id).subscribe(
       ( data: any ) => {
         this.article = data.body.result[0];
-        console.log(this.article);
+        //console.log(this.article);
         this.loading = false;
       },
       error => {
